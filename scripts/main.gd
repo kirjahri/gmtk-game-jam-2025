@@ -1,6 +1,14 @@
 extends Node2D
 
+@export var strokes: int = 5
+
 @export var line_color: Color
+
+@export var hud: Control
+
+
+func _ready() -> void:
+	hud.update_strokes_label(strokes)
 
 
 func _process(_delta: float) -> void:
@@ -10,7 +18,7 @@ func _process(_delta: float) -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") and strokes > 0:
 		var line: Line2D = Line2D.new()
 
 		line.default_color = line_color
@@ -28,6 +36,9 @@ func _input(_event: InputEvent) -> void:
 		for child: Node in get_children():
 			if child is Line2D and not child.is_in_group("complete_line"):
 				child.add_to_group("complete_line")
+
+				strokes -= 1
+				hud.update_strokes_label(strokes)
 
 				# Add collision to the line
 				for i: int in child.points.size() - 1:
