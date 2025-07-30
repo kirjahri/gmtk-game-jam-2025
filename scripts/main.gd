@@ -1,10 +1,14 @@
 extends Node2D
 
+@export_group("Line")
 @export var strokes: int = 5
-
+@export var max_line_length: float = 200.0
 @export var line_color: Color
 
+@export_group("HUD")
 @export var hud: Control
+
+var last_valid_mouse_pos: Vector2
 
 
 func _ready() -> void:
@@ -54,4 +58,11 @@ func _process(_delta: float) -> void:
 
 	for child: Node in get_children():
 		if child is Line2D and not child.is_in_group("complete_line"):
-			child.set_point_position(1, get_global_mouse_position())
+			if (
+				child.get_point_position(0).distance_to(get_global_mouse_position())
+				> max_line_length
+			):
+				child.set_point_position(1, last_valid_mouse_pos)
+			else:
+				child.set_point_position(1, get_global_mouse_position())
+				last_valid_mouse_pos = get_global_mouse_position()
