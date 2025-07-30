@@ -25,21 +25,17 @@ func _process(_delta: float) -> void:
 		line.add_point(get_global_mouse_position())
 
 		add_child(line)
-		print("line added")
 
 	if Input.is_action_just_released("left_click"):
 		for child: Node in get_children():
 			if child is Line2D and not child.is_in_group("complete_line"):
-				child.add_to_group("complete_line")
-				print("added to group")
-
 				if child.get_point_position(0) == child.get_point_position(1):
 					child.queue_free()
-					print("not long enough")
 					return
 
+				child.add_to_group("complete_line")
+
 				strokes -= 1
-				print("stroke consumed")
 				hud.update_strokes_label(strokes)
 
 				# Add collision to the line
