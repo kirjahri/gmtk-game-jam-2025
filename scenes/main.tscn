@@ -7,7 +7,7 @@
 [node name="Main" type="Node"]
 
 [node name="Ball" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(960, 540)
+position = Vector2(960, 1016)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
