@@ -12,12 +12,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	for child: Node in get_children():
-		if child is Line2D and not child.is_in_group("complete_line"):
-			child.set_point_position(1, get_global_mouse_position())
-
-
-func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click") and strokes > 0:
 		var line: Line2D = Line2D.new()
 
@@ -31,17 +25,21 @@ func _input(_event: InputEvent) -> void:
 		line.add_point(get_global_mouse_position())
 
 		add_child(line)
+		print("line added")
 
 	if Input.is_action_just_released("left_click"):
 		for child: Node in get_children():
 			if child is Line2D and not child.is_in_group("complete_line"):
 				child.add_to_group("complete_line")
+				print("added to group")
 
 				if child.get_point_position(0) == child.get_point_position(1):
 					child.queue_free()
+					print("not long enough")
 					return
 
 				strokes -= 1
+				print("stroke consumed")
 				hud.update_strokes_label(strokes)
 
 				# Add collision to the line
@@ -57,3 +55,7 @@ func _input(_event: InputEvent) -> void:
 					segment_shape.b = child.points[i + 1]
 
 					collision_shape.shape = segment_shape
+
+	for child: Node in get_children():
+		if child is Line2D and not child.is_in_group("complete_line"):
+			child.set_point_position(1, get_global_mouse_position())
