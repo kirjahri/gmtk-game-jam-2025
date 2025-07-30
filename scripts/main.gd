@@ -37,6 +37,10 @@ func _input(_event: InputEvent) -> void:
 			if child is Line2D and not child.is_in_group("complete_line"):
 				child.add_to_group("complete_line")
 
+				if child.get_point_position(0) == child.get_point_position(1):
+					child.queue_free()
+					return
+
 				strokes -= 1
 				hud.update_strokes_label(strokes)
 
