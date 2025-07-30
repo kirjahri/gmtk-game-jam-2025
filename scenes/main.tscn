@@ -11,7 +11,7 @@ size = Vector2(300, 100)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("hud")]
 script = ExtResource("1_0wfyh")
-max_line_length = 500.0
+max_line_length = 1000.0
 hud = NodePath("CanvasLayer/HUD")
 
 [node name="Ball" parent="." instance=ExtResource("1_o5qli")]
