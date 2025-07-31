@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwwk3akxnt8ks"]
+
+[ext_resource type="PackedScene" uid="uid://blhwo120r381" path="res://scenes/stopwatch.tscn" id="1_7x7cx"]
+[ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_b6i88"]
+[ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="2_b6i88"]
+[ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_e18e5"]
+[ext_resource type="PackedScene" uid="uid://saykkuagkei2" path="res://scenes/box.tscn" id="4_m5qie"]
+[ext_resource type="PackedScene" uid="uid://babhh2aw6rm26" path="res://scenes/bounce_pad.tscn" id="5_kydov"]
+[ext_resource type="PackedScene" uid="uid://nvlpyjcg6ceg" path="res://scenes/kill_zone.tscn" id="6_uwlxl"]
+[ext_resource type="PackedScene" uid="uid://cxh7hn42gfr1f" path="res://scenes/goal.tscn" id="7_4wfvb"]
+[ext_resource type="PackedScene" uid="uid://1re7c0ny3pku" path="res://scenes/key.tscn" id="9_e18e5"]
+
+[node name="Level6" type="Node2D" node_paths=PackedStringArray("goal", "hud")]
+script = ExtResource("1_b6i88")
+strokes = 3
+max_line_length = 500.0
+goal = NodePath("Goal")
+hud = NodePath("CanvasLayer/HUD")
+
+[node name="Stopwatch" parent="." node_paths=PackedStringArray("goal", "hud") instance=ExtResource("1_7x7cx")]
+goal = NodePath("../Goal")
+hud = NodePath("../CanvasLayer/HUD")
+
+[node name="Player" parent="." instance=ExtResource("2_b6i88")]
+position = Vector2(60, 780)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_e18e5")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Box" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(0, 840)
+scale = Vector2(4, 2.4)
+
+[node name="BouncePad" parent="." instance=ExtResource("5_kydov")]
+position = Vector2(290, 830)
+bounce_speed = 2000.0
+direction = 2
+
+[node name="Box2" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(560, 240)
+scale = Vector2(4, 8.4)
+
+[node name="KillZone" parent="." instance=ExtResource("6_uwlxl")]
+scale = Vector2(7.2, 0.1)
+
+[node name="KillZone2" parent="." instance=ExtResource("6_uwlxl")]
+position = Vector2(400, 1070)
+scale = Vector2(1.6, 0.1)
+
+[node name="KillZone3" parent="." instance=ExtResource("6_uwlxl")]
+position = Vector2(960, 1070)
+scale = Vector2(4, 0.1)
+
+[node name="Box3" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(1360, 840)
+scale = Vector2(0.1, -8.4)
+
+[node name="Box4" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(1370, 240)
+scale = Vector2(5.5, 0.8)
+
+[node name="Goal" parent="." instance=ExtResource("7_4wfvb")]
+position = Vector2(1380, 170)
+
+[node name="Box5" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(1910, 320)
+scale = Vector2(0.1, 7.6)
+
+[node name="Box6" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(0, 240)
+scale = Vector2(0.9, 0.8)
+
+[node name="Key" parent="." instance=ExtResource("9_e18e5")]
+position = Vector2(30, 180)
+
+[node name="Box7" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(1910, -1.90735e-06)
+scale = Vector2(0.1, 2.4)
+
+[node name="Box8" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(0, 10)
+scale = Vector2(0.1, 2.3)

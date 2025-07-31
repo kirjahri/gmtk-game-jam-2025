@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	if (
 		Input.is_action_pressed("duck")
 		and is_on_floor()
+		and not get_last_slide_collision() == null
 		and get_last_slide_collision().get_collider().is_in_group("platform")
 	):
 		position.y += 1

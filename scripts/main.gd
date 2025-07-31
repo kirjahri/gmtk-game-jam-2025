@@ -97,7 +97,7 @@ func _on_key_collected() -> void:
 
 func _on_kill_zone_touched() -> void:
 	print("you died :(")
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
 
 
 func _on_goal_touched() -> void:
