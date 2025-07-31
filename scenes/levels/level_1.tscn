@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://boym45fi48cyw"]
 
-[ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="2_x42e6"]
+[ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_6761a"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sugp2"]
 
@@ -12,18 +12,19 @@ size = Vector2(364, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(364, 100)
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("hud")]
-script = ExtResource("1_0wfyh")
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("hud")]
+script = ExtResource("1_nsrm0")
 strokes = 1
 max_line_length = 750.0
 hud = NodePath("CanvasLayer/HUD")
 
-[node name="Ball" parent="." instance=ExtResource("1_o5qli")]
+[node name="Ball" parent="." instance=ExtResource("2_x42e6")]
 position = Vector2(64, 916)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_sugp2")]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_6761a")]
+metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
@@ -31,6 +32,7 @@ position = Vector2(64, 916)
 offset_top = 980.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(0, 980)
