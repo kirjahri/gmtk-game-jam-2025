@@ -40,6 +40,7 @@ scale = Vector2(14.4, 0.1)
 
 [node name="BouncePad" parent="." instance=ExtResource("6_xsrpe")]
 position = Vector2(170, 530)
+scale = Vector2(0.6, 0.1)
 bounce_speed = 1250.0
 direction = 2
 
@@ -57,6 +58,7 @@ scale = Vector2(2.4, 2.4)
 
 [node name="BouncePad2" parent="." instance=ExtResource("6_xsrpe")]
 position = Vector2(1840, 830)
+scale = Vector2(0.6, 0.1)
 bounce_speed = 1500.0
 direction = 2
 

@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://bxfaj5w2vt1ou" path="res://scripts/bounce_pad.gd" id="1_fd0mo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42aby"]
-size = Vector2(60, 10)
+size = Vector2(100, 100)
 
 [node name="BouncePad" type="Area2D"]
 script = ExtResource("1_fd0mo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 60.0
-offset_bottom = 10.0
+offset_right = 100.0
+offset_bottom = 100.0
 color = Color(0, 1, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(30, 5)
+position = Vector2(50, 50)
 shape = SubResource("RectangleShape2D_42aby")
