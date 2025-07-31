@@ -1,6 +1,9 @@
 extends Area2D
 
-@export var bounce_velocity: float = -400.0
+enum Direction { LEFT, RIGHT, UP, DOWN }
+
+@export var bounce_speed: float = 400.0
+@export var direction: Direction
 
 
 func _ready() -> void:
@@ -9,4 +12,12 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body.velocity.y = bounce_velocity
+		match direction:
+			Direction.LEFT:
+				body.velocity.x = -bounce_speed
+			Direction.RIGHT:
+				body.velocity.x = bounce_speed
+			Direction.UP:
+				body.velocity.y = -bounce_speed
+			Direction.DOWN:
+				body.velocity.y = bounce_speed

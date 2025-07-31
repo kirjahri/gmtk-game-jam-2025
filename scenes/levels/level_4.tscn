@@ -37,7 +37,8 @@ scale = Vector2(4, 8.4)
 
 [node name="BouncePad" parent="." instance=ExtResource("5_rej77")]
 position = Vector2(290, 230)
-bounce_velocity = -800.0
+bounce_speed = 800.0
+direction = 2
 
 [node name="Box2" parent="." instance=ExtResource("4_anwe6")]
 position = Vector2(0, 1000)
