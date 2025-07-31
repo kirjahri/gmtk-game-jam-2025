@@ -8,6 +8,8 @@ radius = 64.1249
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["player"]]
 scale = Vector2(0.8, 0.8)
+floor_constant_speed = true
+floor_snap_length = 32.0
 script = ExtResource("1_cxlvu")
 sprite = NodePath("Sprite2D")
 speed = 450.0

@@ -1,0 +1,236 @@
+[gd_scene load_steps=19 format=3 uid="uid://bn3a12uwbrvsr"]
+
+[ext_resource type="PackedScene" uid="uid://blhwo120r381" path="res://scenes/stopwatch.tscn" id="1_62qgl"]
+[ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_m2cpo"]
+[ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="2_csf6e"]
+[ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_sd2du"]
+[ext_resource type="PackedScene" uid="uid://saykkuagkei2" path="res://scenes/box.tscn" id="4_6v45j"]
+[ext_resource type="PackedScene" uid="uid://b1xpjfc5wcwyh" path="res://scenes/platform.tscn" id="5_ltlq2"]
+[ext_resource type="PackedScene" uid="uid://nvlpyjcg6ceg" path="res://scenes/kill_zone.tscn" id="6_6nuwh"]
+[ext_resource type="PackedScene" uid="uid://1re7c0ny3pku" path="res://scenes/key.tscn" id="8_kj523"]
+[ext_resource type="PackedScene" uid="uid://cxh7hn42gfr1f" path="res://scenes/goal.tscn" id="9_xampj"]
+
+[sub_resource type="Animation" id="Animation_xev4b"]
+resource_name = "move_kill_zone"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KillZone3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(800, 480), Vector2(1200, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_v1y24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KillZone3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(800, 480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ylwrn"]
+_data = {
+&"RESET": SubResource("Animation_v1y24"),
+&"move_kill_zone": SubResource("Animation_xev4b")
+}
+
+[sub_resource type="Animation" id="Animation_c68rt"]
+resource_name = "move_kill_zone"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(240, 400), Vector2(640, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_b7r0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xex4j"]
+_data = {
+&"RESET": SubResource("Animation_b7r0f"),
+&"move_kill_zone": SubResource("Animation_c68rt")
+}
+
+[sub_resource type="Animation" id="Animation_rj4iy"]
+resource_name = "move_kill_zone"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 640), Vector2(240, 640)]
+}
+
+[sub_resource type="Animation" id="Animation_0vi5c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 640)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5hxyp"]
+_data = {
+&"RESET": SubResource("Animation_0vi5c"),
+&"move_kill_zone": SubResource("Animation_rj4iy")
+}
+
+[node name="Level9" type="Node2D" node_paths=PackedStringArray("goal", "hud")]
+script = ExtResource("1_m2cpo")
+strokes = 2
+max_line_length = 500.0
+goal = NodePath("Goal")
+hud = NodePath("CanvasLayer/HUD")
+
+[node name="Stopwatch" parent="." node_paths=PackedStringArray("goal", "hud") instance=ExtResource("1_62qgl")]
+goal = NodePath("../Goal")
+hud = NodePath("../CanvasLayer/HUD")
+
+[node name="Player" parent="." instance=ExtResource("2_csf6e")]
+position = Vector2(120, 180)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_sd2du")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Box" parent="." instance=ExtResource("4_6v45j")]
+position = Vector2(0, 240)
+scale = Vector2(2.4, 6)
+
+[node name="Box2" parent="." instance=ExtResource("4_6v45j")]
+position = Vector2(720, 0)
+scale = Vector2(0.8, 8.4)
+
+[node name="Box3" parent="." instance=ExtResource("4_6v45j")]
+position = Vector2(1280, 0)
+scale = Vector2(0.8, 8.4)
+
+[node name="Box4" parent="." instance=ExtResource("4_6v45j")]
+position = Vector2(230, 1.52588e-05)
+scale = Vector2(0.1, 2.4)
+
+[node name="Platform" parent="." instance=ExtResource("5_ltlq2")]
+position = Vector2(1360, 240)
+scale = Vector2(5.6, 0.1)
+
+[node name="Platform2" parent="." instance=ExtResource("5_ltlq2")]
+position = Vector2(800, 240)
+scale = Vector2(4.8, 0.1)
+
+[node name="Platform3" parent="." instance=ExtResource("5_ltlq2")]
+position = Vector2(240, 240)
+scale = Vector2(4.8, 0.1)
+
+[node name="KillZone" parent="." instance=ExtResource("6_6nuwh")]
+position = Vector2(1360, 470)
+scale = Vector2(3.2, 0.1)
+
+[node name="KillZone2" parent="." instance=ExtResource("6_6nuwh")]
+position = Vector2(1600, 800)
+scale = Vector2(3.2, 0.1)
+
+[node name="KillZone3" parent="." instance=ExtResource("6_6nuwh")]
+position = Vector2(800, 480)
+scale = Vector2(0.8, 0.8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KillZone3"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ylwrn")
+}
+autoplay = "move_kill_zone"
+
+[node name="KillZone4" parent="." instance=ExtResource("6_6nuwh")]
+position = Vector2(240, 400)
+scale = Vector2(0.8, 0.8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KillZone4"]
+libraries = {
+&"": SubResource("AnimationLibrary_xex4j")
+}
+autoplay = "move_kill_zone"
+
+[node name="KillZone5" parent="." instance=ExtResource("6_6nuwh")]
+position = Vector2(640, 640)
+scale = Vector2(0.8, 0.8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KillZone5"]
+libraries = {
+&"": SubResource("AnimationLibrary_5hxyp")
+}
+autoplay = "move_kill_zone"
+
+[node name="Key" parent="." instance=ExtResource("8_kj523")]
+position = Vector2(1020, 500)
+
+[node name="Box5" parent="." instance=ExtResource("4_6v45j")]
+position = Vector2(0, 1000)
+scale = Vector2(2.8, 0.8)
+
+[node name="Goal" parent="." instance=ExtResource("9_xampj")]
+position = Vector2(20, 930)
+
+[node name="Box6" parent="." instance=ExtResource("4_6v45j")]
+position = Vector2(0, 840)
+scale = Vector2(0.1, 1.6)
+
+[node name="Box7" parent="." instance=ExtResource("4_6v45j")]
+position = Vector2(1280, 1070)
+scale = Vector2(0.8, 0.1)
+
+[node name="Box8" parent="." instance=ExtResource("4_6v45j")]
+position = Vector2(720, 1070)
+scale = Vector2(0.8, 0.1)
+
+[node name="Key2" parent="." instance=ExtResource("8_kj523")]
+position = Vector2(460, 500)
