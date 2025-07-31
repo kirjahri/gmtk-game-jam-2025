@@ -36,6 +36,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0.0, deacceleration * delta)
 		rotation += velocity.x / 5000
 
+	if (
+		Input.is_action_pressed("duck")
+		and is_on_floor()
+		and get_last_slide_collision().get_collider().is_in_group("platform")
+	):
+		position.y += 1
+
 	global_position = Vector2(
 		wrapf(global_position.x, 0, viewport_size.x), wrapf(global_position.y, 0, viewport_size.y)
 	)

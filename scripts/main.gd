@@ -24,6 +24,9 @@ func _ready() -> void:
 			if not goal.is_locked:
 				goal.lock()
 
+		if child.is_in_group("kill_zone"):
+			child.kill_zone_touched.connect(_on_kill_zone_touched)
+
 	goal.goal_touched.connect(_on_goal_touched)
 
 
@@ -90,6 +93,11 @@ func _on_key_collected() -> void:
 
 	goal.unlock()
 	print("unlocked")
+
+
+func _on_kill_zone_touched() -> void:
+	print("you died :(")
+	get_tree().reload_current_scene()
 
 
 func _on_goal_touched() -> void:
