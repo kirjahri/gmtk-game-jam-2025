@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var deacceleration: float = 300.0
 @export var sprint_multiplier: float = 2.0
 @export var jump_velocity: float = -400.0
+@export var terminal_velocity: float = 600.0
 
 @onready var viewport_size: Vector2 = get_viewport_rect().size
 @onready var half_of_width: float = sprite.texture.get_size().x / 2
@@ -17,6 +18,7 @@ func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		velocity.y = min(velocity.y, terminal_velocity)
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
