@@ -5,6 +5,9 @@ extends Node2D
 @export var max_line_length: float = 200.0
 @export var line_color: Color
 
+@export_group("Goal")
+@export var goal: Area2D
+
 @export_group("HUD")
 @export var hud: Control
 
@@ -13,6 +16,8 @@ var last_valid_mouse_pos: Vector2
 
 func _ready() -> void:
 	hud.update_strokes_label(strokes)
+
+	goal.goal_touched.connect(_on_goal_touched)
 
 
 func _process(_delta: float) -> void:
@@ -69,3 +74,7 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
+
+
+func _on_goal_touched() -> void:
+	print("you win!!!")

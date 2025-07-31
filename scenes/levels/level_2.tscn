@@ -1,33 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb2ihcfcch4ud"]
+[gd_scene load_steps=6 format=3 uid="uid://cb2ihcfcch4ud"]
 
 [ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="1_g2h2n"]
 [ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_ra442"]
 [ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="2_ra442"]
+[ext_resource type="PackedScene" uid="uid://saykkuagkei2" path="res://scenes/box.tscn" id="4_fiq81"]
+[ext_resource type="PackedScene" uid="uid://cxh7hn42gfr1f" path="res://scenes/goal.tscn" id="5_l37oo"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fiq81"]
-
-[node name="Level2" type="Node2D" node_paths=PackedStringArray("hud")]
+[node name="Level2" type="Node2D" node_paths=PackedStringArray("goal", "hud")]
 script = ExtResource("1_ra442")
 strokes = 1
 max_line_length = 750.0
+goal = NodePath("Goal")
 hud = NodePath("CanvasLayer/HUD")
 
-[node name="Ball" parent="." instance=ExtResource("1_g2h2n")]
-position = Vector2(64, 916)
+[node name="Player" parent="." instance=ExtResource("1_g2h2n")]
+position = Vector2(70, 930)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("2_ra442")]
 metadata/_edit_use_anchors_ = true
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="Box" parent="." instance=ExtResource("4_fiq81")]
+position = Vector2(0, 1000)
+scale = Vector2(9.6, 0.8)
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
-offset_top = 980.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="Box2" parent="." instance=ExtResource("4_fiq81")]
+position = Vector2(960, 240)
+scale = Vector2(9.6, 0.8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(0, 980)
-scale = Vector2(1.01437, 0.993045)
-shape = SubResource("WorldBoundaryShape2D_fiq81")
+[node name="Box3" parent="." instance=ExtResource("4_fiq81")]
+position = Vector2(3.8147e-06, 240)
+scale = Vector2(2.4, 0.8)
+
+[node name="Goal" parent="." instance=ExtResource("5_l37oo")]
+position = Vector2(90, 170)

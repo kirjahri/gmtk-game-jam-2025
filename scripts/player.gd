@@ -35,8 +35,7 @@ func _physics_process(delta: float) -> void:
 		rotation += velocity.x / 5000
 
 	global_position = Vector2(
-		wrapf(global_position.x, 0 - half_of_width, viewport_size.x + half_of_width),
-		wrapf(global_position.y, 0 - half_of_width, viewport_size.y + half_of_width)
+		wrapf(global_position.x, 0, viewport_size.x), wrapf(global_position.y, 0, viewport_size.y)
 	)
 
 	move_and_slide()

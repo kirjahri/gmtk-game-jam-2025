@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlg0vxewfw3jt"]
+
+[ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_0ljxa"]
+[ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="2_0qepi"]
+[ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_fmg3e"]
+
+[node name="Level3" type="Node2D" node_paths=PackedStringArray("hud")]
+script = ExtResource("1_0ljxa")
+hud = NodePath("CanvasLayer/HUD")
+
+[node name="Player" parent="." instance=ExtResource("2_0qepi")]
+position = Vector2(70, 930)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_fmg3e")]
+metadata/_edit_use_anchors_ = true
