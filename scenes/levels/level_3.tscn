@@ -1,17 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlg0vxewfw3jt"]
+[gd_scene load_steps=8 format=3 uid="uid://dlg0vxewfw3jt"]
 
 [ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="2_0qepi"]
+[ext_resource type="PackedScene" uid="uid://blhwo120r381" path="res://scenes/stopwatch.tscn" id="2_fkk1g"]
 [ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_fmg3e"]
+[ext_resource type="PackedScene" uid="uid://saykkuagkei2" path="res://scenes/box.tscn" id="4_0qepi"]
+[ext_resource type="PackedScene" uid="uid://cxh7hn42gfr1f" path="res://scenes/goal.tscn" id="5_fmg3e"]
+[ext_resource type="PackedScene" uid="uid://1re7c0ny3pku" path="res://scenes/key.tscn" id="6_ftfob"]
 
-[node name="Level3" type="Node2D" node_paths=PackedStringArray("hud")]
+[node name="Level3" type="Node2D" node_paths=PackedStringArray("goal", "hud")]
 script = ExtResource("1_0ljxa")
+strokes = 1
+max_line_length = 750.0
+goal = NodePath("Goal")
 hud = NodePath("CanvasLayer/HUD")
 
+[node name="Stopwatch" parent="." node_paths=PackedStringArray("goal", "hud") instance=ExtResource("2_fkk1g")]
+goal = NodePath("../Goal")
+hud = NodePath("../CanvasLayer/HUD")
+
 [node name="Player" parent="." instance=ExtResource("2_0qepi")]
-position = Vector2(70, 930)
+position = Vector2(70, 450)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_fmg3e")]
 metadata/_edit_use_anchors_ = true
+
+[node name="Key" parent="." instance=ExtResource("6_ftfob")]
+position = Vector2(1580, 220)
+
+[node name="Goal" parent="." instance=ExtResource("5_fmg3e")]
+position = Vector2(650, 450)
+
+[node name="Box" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(0, 520)
+scale = Vector2(2.4, 5.6)
+
+[node name="Box2" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(480, 240)
+scale = Vector2(0.8, 8.4)
+
+[node name="Box3" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(3.05176e-05, 240)
+scale = Vector2(4.8, 0.8)
+
+[node name="Box4" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(480, 0)
+scale = Vector2(0.8, 2.4)
+
+[node name="Box5" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(1680, 240)
+scale = Vector2(2.4, 0.8)
+
+[node name="Box6" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(1440, 0)
+scale = Vector2(0.8, 2.4)
+
+[node name="Box7" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(1440, 240)
+scale = Vector2(0.8, 0.8)
+
+[node name="Box8" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(1440, 520)
+scale = Vector2(4.8, 5.6)
+
+[node name="Box9" parent="." instance=ExtResource("4_0qepi")]
+position = Vector2(640, 520)
+scale = Vector2(0.8, 5.6)
