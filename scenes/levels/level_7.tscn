@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://yijdhfys4em3"]
+
+[ext_resource type="PackedScene" uid="uid://blhwo120r381" path="res://scenes/stopwatch.tscn" id="1_bl61q"]
+[ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_u1w5x"]
+[ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="2_772ry"]
+[ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_d06uk"]
+[ext_resource type="PackedScene" uid="uid://saykkuagkei2" path="res://scenes/box.tscn" id="5_posk4"]
+[ext_resource type="PackedScene" uid="uid://1re7c0ny3pku" path="res://scenes/key.tscn" id="6_sjq8i"]
+[ext_resource type="PackedScene" uid="uid://nvlpyjcg6ceg" path="res://scenes/kill_zone.tscn" id="7_q0wsq"]
+[ext_resource type="PackedScene" uid="uid://cxh7hn42gfr1f" path="res://scenes/goal.tscn" id="8_posk4"]
+[ext_resource type="PackedScene" uid="uid://babhh2aw6rm26" path="res://scenes/bounce_pad.tscn" id="9_sjq8i"]
+
+[node name="Level7" type="Node2D" node_paths=PackedStringArray("goal", "hud")]
+script = ExtResource("1_u1w5x")
+strokes = 3
+goal = NodePath("Goal")
+hud = NodePath("CanvasLayer/HUD")
+
+[node name="Stopwatch" parent="." node_paths=PackedStringArray("goal", "hud") instance=ExtResource("1_bl61q")]
+goal = NodePath("../Goal")
+hud = NodePath("../CanvasLayer/HUD")
+
+[node name="Player" parent="." instance=ExtResource("2_772ry")]
+position = Vector2(80, 490)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_d06uk")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Box" parent="." instance=ExtResource("5_posk4")]
+position = Vector2(0, 600)
+scale = Vector2(4, 4.8)
+
+[node name="Key" parent="." instance=ExtResource("6_sjq8i")]
+position = Vector2(940, 60)
+
+[node name="Box2" parent="." instance=ExtResource("5_posk4")]
+position = Vector2(400, 0)
+scale = Vector2(0.1, 2.4)
+
+[node name="Box3" parent="." instance=ExtResource("5_posk4")]
+position = Vector2(400, 240)
+scale = Vector2(11.2, 0.8)
+
+[node name="KillZone" parent="." instance=ExtResource("7_q0wsq")]
+position = Vector2(410, 230)
+scale = Vector2(11.1, 0.1)
+
+[node name="Goal" parent="." instance=ExtResource("8_posk4")]
+position = Vector2(730, 810)
+
+[node name="BouncePad" parent="." instance=ExtResource("9_sjq8i")]
+position = Vector2(420, 130)
+rotation = 1.5708
+bounce_speed = 3000.0
+direction = 1
+
+[node name="Box4" parent="." instance=ExtResource("5_posk4")]
+position = Vector2(640, 320)
+scale = Vector2(0.1, 7.6)
+
+[node name="Box5" parent="." instance=ExtResource("5_posk4")]
+position = Vector2(720, 880)
+scale = Vector2(0.8, 2)
