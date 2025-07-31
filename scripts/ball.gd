@@ -3,7 +3,8 @@ extends CharacterBody2D
 @export var sprite: Sprite2D
 
 @export var speed: float = 300.0
-@export var sprint_multipolier: float = 2.0
+@export var rotation_speed: float = 1.5
+@export var sprint_multiplier: float = 2.0
 @export var jump_velocity: float = -400.0
 
 @onready var viewport_size: Vector2 = get_viewport_rect().size
@@ -21,9 +22,11 @@ func _physics_process(delta: float) -> void:
 
 	if not direction == 0.0:
 		if Input.is_action_pressed("sprint"):
-			velocity.x = speed * sprint_multipolier * direction
+			velocity.x = speed * sprint_multiplier * direction
+			rotation += rotation_speed * sprint_multiplier * direction * delta
 		else:
 			velocity.x = speed * direction
+			rotation += rotation_speed * direction * delta
 	else:
 		velocity.x = 0.0
 

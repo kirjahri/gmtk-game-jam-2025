@@ -11,7 +11,8 @@ size = Vector2(300, 100)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("hud")]
 script = ExtResource("1_0wfyh")
-max_line_length = 1000.0
+strokes = 1
+max_line_length = 750.0
 hud = NodePath("CanvasLayer/HUD")
 
 [node name="Ball" parent="." instance=ExtResource("1_o5qli")]
@@ -33,13 +34,25 @@ position = Vector2(0, 980)
 shape = SubResource("WorldBoundaryShape2D_sugp2")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1770, 540)
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = 1620.0
-offset_top = 490.0
-offset_right = 1920.0
-offset_bottom = 590.0
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1770, 540)
+shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(150, 540)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource("RectangleShape2D_sugp2")
