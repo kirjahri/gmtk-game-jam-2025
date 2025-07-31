@@ -10,7 +10,7 @@
 size = Vector2(364, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
-size = Vector2(332, 100)
+size = Vector2(364, 100)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("hud")]
 script = ExtResource("1_0wfyh")
@@ -60,5 +60,5 @@ offset_right = 150.0
 offset_bottom = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(-16, 0)
+position = Vector2(-32, 0)
 shape = SubResource("RectangleShape2D_sugp2")
