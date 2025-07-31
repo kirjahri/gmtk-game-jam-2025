@@ -10,7 +10,9 @@ radius = 64.1249
 script = ExtResource("1_cxlvu")
 sprite = NodePath("Sprite2D")
 speed = 450.0
-rotation_speed = 5.0
+acceleration = 1500.0
+deacceleration = 1500.0
+sprint_multiplier = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, -1.13249e-06)

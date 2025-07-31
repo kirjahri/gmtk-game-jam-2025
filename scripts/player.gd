@@ -3,7 +3,8 @@ extends CharacterBody2D
 @export var sprite: Sprite2D
 
 @export var speed: float = 300.0
-@export var rotation_speed: float = 1.5
+@export var acceleration: float = 300.0
+@export var deacceleration: float = 300.0
 @export var sprint_multiplier: float = 2.0
 @export var jump_velocity: float = -400.0
 
@@ -22,13 +23,16 @@ func _physics_process(delta: float) -> void:
 
 	if not direction == 0.0:
 		if Input.is_action_pressed("sprint"):
-			velocity.x = speed * sprint_multiplier * direction
-			rotation += rotation_speed * sprint_multiplier * direction * delta
+			velocity.x = move_toward(
+				velocity.x, speed * sprint_multiplier * direction, acceleration * delta
+			)
+			rotation += velocity.x / 5000  # likely a horrid way of doing this but it's gonna have to do for now
 		else:
-			velocity.x = speed * direction
-			rotation += rotation_speed * direction * delta
+			velocity.x = move_toward(velocity.x, speed * direction, acceleration * delta)
+			rotation += velocity.x / 5000
 	else:
-		velocity.x = 0.0
+		velocity.x = move_toward(velocity.x, 0.0, deacceleration * delta)
+		rotation += velocity.x / 5000
 
 	global_position = Vector2(
 		wrapf(global_position.x, 0 - half_of_width, viewport_size.x + half_of_width),
