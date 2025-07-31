@@ -17,6 +17,13 @@ var last_valid_mouse_pos: Vector2
 func _ready() -> void:
 	hud.update_strokes_label(strokes)
 
+	for child: Node in get_children():
+		if child.is_in_group("key"):
+			child.key_collected.connect(_on_key_collected)
+
+			if not goal.is_locked:
+				goal.lock()
+
 	goal.goal_touched.connect(_on_goal_touched)
 
 
@@ -74,6 +81,15 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
+
+
+func _on_key_collected() -> void:
+	for child: Node in get_children():
+		if child.is_in_group("key"):
+			return
+
+	goal.unlock()
+	print("unlocked")
 
 
 func _on_goal_touched() -> void:

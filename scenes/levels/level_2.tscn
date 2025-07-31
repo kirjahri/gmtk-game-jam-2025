@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cb2ihcfcch4ud"]
+[gd_scene load_steps=8 format=3 uid="uid://cb2ihcfcch4ud"]
 
 [ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="1_g2h2n"]
 [ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_ra442"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="2_ra442"]
 [ext_resource type="PackedScene" uid="uid://saykkuagkei2" path="res://scenes/box.tscn" id="4_fiq81"]
 [ext_resource type="PackedScene" uid="uid://cxh7hn42gfr1f" path="res://scenes/goal.tscn" id="5_l37oo"]
+[ext_resource type="PackedScene" uid="uid://1re7c0ny3pku" path="res://scenes/key.tscn" id="7_ibugp"]
 
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("goal", "hud")]
 script = ExtResource("1_ra442")
@@ -40,3 +41,6 @@ scale = Vector2(2.4, 0.8)
 
 [node name="Goal" parent="." instance=ExtResource("5_l37oo")]
 position = Vector2(90, 170)
+
+[node name="Key" parent="." instance=ExtResource("7_ibugp")]
+position = Vector2(180, 180)
