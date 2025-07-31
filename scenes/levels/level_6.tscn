@@ -22,7 +22,7 @@ goal = NodePath("../Goal")
 hud = NodePath("../CanvasLayer/HUD")
 
 [node name="Player" parent="." instance=ExtResource("2_b6i88")]
-position = Vector2(60, 780)
+position = Vector2(70, 780)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -82,3 +82,7 @@ scale = Vector2(0.1, 2.4)
 [node name="Box8" parent="." instance=ExtResource("4_m5qie")]
 position = Vector2(0, 10)
 scale = Vector2(0.1, 2.3)
+
+[node name="Box9" parent="." instance=ExtResource("4_m5qie")]
+position = Vector2(1.13687e-13, 320)
+scale = Vector2(0.1, 5.2)
