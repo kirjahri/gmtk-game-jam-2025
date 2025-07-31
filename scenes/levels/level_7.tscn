@@ -63,3 +63,11 @@ scale = Vector2(0.1, 7.6)
 [node name="Box5" parent="." instance=ExtResource("5_posk4")]
 position = Vector2(720, 880)
 scale = Vector2(0.8, 2)
+
+[node name="KillZone2" parent="." instance=ExtResource("7_q0wsq")]
+position = Vector2(650, 1070)
+scale = Vector2(0.7, 0.1)
+
+[node name="KillZone3" parent="." instance=ExtResource("7_q0wsq")]
+position = Vector2(800, 1070)
+scale = Vector2(11.2, 0.1)
