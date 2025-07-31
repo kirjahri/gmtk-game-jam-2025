@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://boym45fi48cyw"]
+[gd_scene load_steps=7 format=3 uid="uid://boym45fi48cyw"]
 
 [ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://blhwo120r381" path="res://scenes/stopwatch.tscn" id="2_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="2_x42e6"]
 [ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_6761a"]
 [ext_resource type="PackedScene" uid="uid://saykkuagkei2" path="res://scenes/box.tscn" id="4_x42e6"]
@@ -12,6 +13,10 @@ strokes = 1
 max_line_length = 750.0
 goal = NodePath("Goal")
 hud = NodePath("CanvasLayer/HUD")
+
+[node name="Stopwatch" parent="." node_paths=PackedStringArray("goal", "hud") instance=ExtResource("2_sk5k4")]
+goal = NodePath("../Goal")
+hud = NodePath("../CanvasLayer/HUD")
 
 [node name="Player" parent="." instance=ExtResource("2_x42e6")]
 position = Vector2(70, 930)
