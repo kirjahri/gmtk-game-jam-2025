@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://c60ogg147cyhg"]
+
+[ext_resource type="Script" uid="uid://b11n8qhdke4v3" path="res://scripts/main.gd" id="1_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://blhwo120r381" path="res://scenes/stopwatch.tscn" id="1_w6h2s"]
+[ext_resource type="PackedScene" uid="uid://7bhmo5d77ls3" path="res://scenes/player.tscn" id="2_ogj6a"]
+[ext_resource type="PackedScene" uid="uid://cfupy2s4owlda" path="res://scenes/hud.tscn" id="3_anwe6"]
+[ext_resource type="PackedScene" uid="uid://saykkuagkei2" path="res://scenes/box.tscn" id="4_anwe6"]
+[ext_resource type="PackedScene" uid="uid://babhh2aw6rm26" path="res://scenes/bounce_pad.tscn" id="5_rej77"]
+[ext_resource type="PackedScene" uid="uid://cxh7hn42gfr1f" path="res://scenes/goal.tscn" id="7_ts8eg"]
+[ext_resource type="PackedScene" uid="uid://1re7c0ny3pku" path="res://scenes/key.tscn" id="8_ts8eg"]
+
+[node name="Level4" type="Node2D" node_paths=PackedStringArray("goal", "hud")]
+script = ExtResource("1_5vn0v")
+strokes = 1
+goal = NodePath("Goal")
+hud = NodePath("CanvasLayer/HUD")
+
+[node name="Stopwatch" parent="." node_paths=PackedStringArray("goal", "hud") instance=ExtResource("1_w6h2s")]
+goal = NodePath("../Goal")
+hud = NodePath("../CanvasLayer/HUD")
+
+[node name="Player" parent="." instance=ExtResource("2_ogj6a")]
+position = Vector2(70, 170)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_anwe6")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Box" parent="." instance=ExtResource("4_anwe6")]
+position = Vector2(0, 240)
+scale = Vector2(4, 6)
+
+[node name="Box6" parent="." instance=ExtResource("4_anwe6")]
+position = Vector2(1520, 240)
+scale = Vector2(4, 8.4)
+
+[node name="BouncePad" parent="." instance=ExtResource("5_rej77")]
+position = Vector2(290, 230)
+bounce_velocity = -800.0
+
+[node name="Box2" parent="." instance=ExtResource("4_anwe6")]
+position = Vector2(0, 1000)
+scale = Vector2(2.4, 0.8)
+
+[node name="Goal" parent="." instance=ExtResource("7_ts8eg")]
+position = Vector2(930, 490)
+
+[node name="Box3" parent="." instance=ExtResource("4_anwe6")]
+position = Vector2(390, 9.53674e-07)
+scale = Vector2(0.1, 2.4)
+
+[node name="Box4" parent="." instance=ExtResource("4_anwe6")]
+position = Vector2(390, 840)
+scale = Vector2(0.1, 2.4)
+
+[node name="Key" parent="." instance=ExtResource("8_ts8eg")]
+position = Vector2(100, 950)
+
+[node name="Box5" parent="." instance=ExtResource("4_anwe6")]
+position = Vector2(0, 840)
+scale = Vector2(0.1, 1.6)
+
+[node name="Box7" parent="." instance=ExtResource("4_anwe6")]
+position = Vector2(1360, 0)
+scale = Vector2(0.1, 9.2)
+
+[node name="Box8" parent="." instance=ExtResource("4_anwe6")]
+position = Vector2(910, 560)
+scale = Vector2(1, 5.2)
