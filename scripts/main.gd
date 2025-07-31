@@ -66,3 +66,6 @@ func _process(_delta: float) -> void:
 			else:
 				child.set_point_position(1, get_global_mouse_position())
 				last_valid_mouse_pos = get_global_mouse_position()
+
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
